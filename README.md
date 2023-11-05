@@ -35,6 +35,7 @@ This repository contains an example RestAPI built with Spring Boot, JPA (Java Pe
 - `DELETE /products/{id}`: Delete a products by their ID.
 
 ### Database Configuration
+Use the provided SQL file (**_demoapi.sql_**) to initialize the database for the application.
 
 The project uses a MySQL database. Update the `application.properties` or `application.yml` file with your MySQL configuration:
 ```sh
