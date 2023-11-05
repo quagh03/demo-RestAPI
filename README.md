@@ -45,35 +45,6 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-### Project Structure 
-.
-└── src
-    ├── main
-    │   ├── java
-    │   │   └── com.example.practiceapi
-    │   │       ├── controller
-    │   │       │   └── CategoriesController.java
-    │   │       ├── dto
-    │   │       │   └── CategoriesDto.java
-    │   │       ├── entity
-    │   │       │   ├── Categories.java
-    │   │       │   └── Products.java
-    │   │       ├── repository
-    │   │       │   ├── CategoriesRepository.java
-    │   │       │   └── ProductRepository.java
-    │   │       ├── service
-    │   │       │   ├── CategoriesService.java
-    │   │       │   └── CategoriesServiceImpl.java
-    │   │       └── PracticeApiApplication.java
-    │   └── resource
-    │       ├── static
-    │       ├── templates
-    │       └── application.properties
-    └── test
-        └── java
-            └── com.example.practiceapi
-                └── PracticeApiApplicationTests.java
-
 ## Running the Application
 1. Ensure your MySQL server is running.
 2. Use your IDE to build and start the Spring Boot application. Alternatively, you can use the Maven:
