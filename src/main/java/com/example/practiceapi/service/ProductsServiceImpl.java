@@ -19,7 +19,8 @@ public class ProductsServiceImpl implements ProductsService{
 
     @Override
     public List<ProductsDto> getAllProducts(){
-        List<ProductsDto> productsDtoList = productRepository.findAll().stream()
+
+        return productRepository.findAll().stream()
                 .map(product -> {
                     ProductsDto productsDto = new ProductsDto();
                     productsDto.setPid(product.getPid());
@@ -39,8 +40,6 @@ public class ProductsServiceImpl implements ProductsService{
                     return productsDto;
                 })
                 .collect(Collectors.toList());
-
-        return productsDtoList;
     }
 
     @Override
@@ -71,6 +70,63 @@ public class ProductsServiceImpl implements ProductsService{
             }
         }catch (Exception e){
             throw new RuntimeException("Error finding product: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void addProduct(ProductsDto productsDto) {
+        try{
+            Categories category = new Categories();
+            category.setCid(productsDto.getCategories().getCid());
+
+            Products product = new Products(
+                    productsDto.getPname(),
+                    productsDto.getPdesc(),
+                    category,
+                    productsDto.getPstatus()
+            );
+
+            productRepository.save(product);
+        } catch (Exception e){
+            throw new RuntimeException("Error: ", e);
+        }
+    }
+
+    @Override
+    public void deleteProduct(Integer pid){
+        try{
+            Optional<Products> tempProduct = productRepository.findById(pid);
+
+            if(tempProduct.isPresent()){
+                productRepository.deleteById(pid);
+            }else{
+                throw new IllegalArgumentException("Product with ID: " + pid + " not found!");
+            }
+        }catch (Exception e){
+            throw new RuntimeException("Error deleting product " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void editProduct(Integer pid, ProductsDto product){
+        try {
+            Optional<Products> tempProduct = productRepository.findById(pid);
+
+            if(tempProduct.isPresent()){
+                Categories category = new Categories();
+                Products existingProduct = tempProduct.get();
+                category.setCid(existingProduct.getCategories().getCid());
+                existingProduct.setPname(product.getPname());
+                existingProduct.setPdesc(product.getPdesc());
+                existingProduct.setCategories(category);
+                existingProduct.setPstatus(product.getPstatus());
+
+                productRepository.save(existingProduct);
+            }else{
+                throw new IllegalArgumentException("Product with ID " + pid + " not found");
+            }
+        }catch (Exception e){
+            throw new RuntimeException("Error: " + e.getMessage());
         }
     }
 }

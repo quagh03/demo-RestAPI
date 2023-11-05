@@ -25,13 +25,12 @@ public class Products {
     private Categories categories;
 
     @Column(name = "pstatus")
-    Integer pstatus;
+    private Integer pstatus;
 
     public Products() {
     }
 
-    public Products(Integer pid, String pname, String pdesc, Categories categories, Integer pstatus) {
-        this.pid = pid;
+    public Products(String pname, String pdesc, Categories categories, Integer pstatus) {
         this.pname = pname;
         this.pdesc = pdesc;
         this.categories = categories;
