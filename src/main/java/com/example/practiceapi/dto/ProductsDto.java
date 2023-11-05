@@ -4,16 +4,33 @@ public class ProductsDto {
     private Integer pid;
     private String pname;
     private String pdesc;
-//    private CategoriesDto categories;
+    private Integer pstatus;
+    private CategoriesDto categories;
 
     public ProductsDto() {
     }
 
-    public ProductsDto(Integer pid, String pname, String pdesc, CategoriesDto categories) {
+    public ProductsDto(Integer pid, String pname, String pdesc, Integer pstatus, CategoriesDto categories) {
         this.pid = pid;
         this.pname = pname;
         this.pdesc = pdesc;
-//        this.categories = categories;
+        this.pstatus = pstatus;
+        this.categories = categories;
+    }
+
+    public ProductsDto(Integer pid, String pname, String pdesc, Integer pstatus) {
+        this.pid = pid;
+        this.pname = pname;
+        this.pdesc = pdesc;
+        this.pstatus = pstatus;
+    }
+
+    public Integer getPstatus() {
+        return pstatus;
+    }
+
+    public void setPstatus(Integer pstatus) {
+        this.pstatus = pstatus;
     }
 
     public Integer getPid() {
@@ -40,13 +57,13 @@ public class ProductsDto {
         this.pdesc = pdesc;
     }
 
-//    public CategoriesDto getCategories() {
-//        return categories;
-//    }
-//
-//    public void setCategories(CategoriesDto categories) {
-//        this.categories = categories;
-//    }
+    public CategoriesDto getCategories() {
+        return categories;
+    }
+
+    public void setCategories(CategoriesDto categories) {
+        this.categories = categories;
+    }
 
     @Override
     public String toString() {
@@ -54,7 +71,8 @@ public class ProductsDto {
                 "pid=" + pid +
                 ", pname='" + pname + '\'' +
                 ", pdesc='" + pdesc + '\'' +
-//                ", categories=" + categories +
+                ", pstatus=" + pstatus +
+                ", categories=" + categories +
                 '}';
     }
 }

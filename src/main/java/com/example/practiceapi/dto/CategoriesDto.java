@@ -7,27 +7,27 @@ public class CategoriesDto {
     private String cname;
     private String cdesc;
     private Integer cstatus;
-    private List<ProductsDto> products;
+//    private List<ProductsDto> products;
 
 
     public CategoriesDto() {
     }
 
-    public CategoriesDto(Integer cid, String cname, String cdesc, Integer cstatus, List<ProductsDto> products) {
+    public CategoriesDto(Integer cid, String cname, String cdesc, Integer cstatus) {
         this.cid = cid;
         this.cname = cname;
         this.cdesc = cdesc;
         this.cstatus = cstatus;
-        this.products = products;
+//        this.products = products;
     }
 
-    public List<ProductsDto> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<ProductsDto> products) {
-        this.products = products;
-    }
+//    public List<ProductsDto> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<ProductsDto> products) {
+//        this.products = products;
+//    }
 
     public Integer getCid() {
         return cid;
@@ -68,7 +68,7 @@ public class CategoriesDto {
                 ", cname='" + cname + '\'' +
                 ", cdesc='" + cdesc + '\'' +
                 ", cstatus=" + cstatus +
-                ", products=" + products +
+//                ", products=" + products +
                 '}';
     }
 }
